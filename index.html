@@ -22,72 +22,14 @@
       overflow-x: hidden;
     }
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 15px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-    }
-
-    .logo {
-      font-weight: 700;
-      color: #A78BFA;
-      font-size: 1.2rem;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      position: relative;
-      transition: 0.3s;
-    }
-
-    /* Underline glow effect */
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: #7F5AF0;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-links a:hover {
-      color: #A78BFA;
-    }
-
-    /* Add spacing so hero is not hidden under navbar */
-    .hero {
-      padding-top: 120px;
-    }
-
-    /* Animated Wiring Background */
+    /* Animated Background */
     body::before {
       content: "";
       position: fixed;
       width: 200%;
       height: 200%;
       background: linear-gradient(45deg, #7F5AF0, #0F172A, #7F5AF0);
-      animation: moveBg 15s linear infinite;
+      animation: moveBg 18s linear infinite;
       z-index: -2;
     }
 
@@ -105,140 +47,175 @@
       }
     }
 
-    /* Cursor Glow */
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 700;
+      color: #A78BFA;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: #A78BFA;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #A78BFA;
+    }
+
+    /* Glow Cursor */
     .glow {
       position: fixed;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       background: #A78BFA;
       pointer-events: none;
       mix-blend-mode: screen;
-      box-shadow: 0 0 20px #A78BFA;
+      box-shadow: 0 0 25px #A78BFA;
       transform: translate(-50%, -50%);
     }
 
     /* Hero Section */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
+      padding-top: 150px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+      gap: 25px;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #A78BFA, #7F5AF0, #C4B5FD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
+    }
+
+    .hero h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
       color: #A78BFA;
+      min-height: 30px;
     }
 
     .hero p {
-      margin-top: 10px;
-      max-width: 600px;
-      line-height: 1.6;
+      max-width: 650px;
+      line-height: 1.8;
+      opacity: 0.85;
+      font-size: 1.05rem;
     }
 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sections */
     .section {
-      padding: 80px 10%;
+      padding: 110px 10%;
     }
 
-    .skills-container {
-      margin-top: 40px;
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      text-align: center;
+      color: #A78BFA;
+    }
+
+    /* Cards */
+    .skills-container,
+    .card-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 25px;
+      gap: 30px;
       justify-content: center;
     }
 
-    .skill-card {
+    .skill-card,
+    .card,
+    .project-card {
       flex: 1 1 280px;
-      max-width: 350px;
-      padding: 25px;
-      border-radius: 18px;
+      max-width: 400px;
+      padding: 30px;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(15px);
-      transition: 0.4s ease;
-      position: relative;
-      overflow: hidden;
+      transition: 0.4s;
     }
 
-    /* Animated Glow Border */
-    .skill-card::before {
-      content: "";
-      position: absolute;
-      width: 150%;
-      height: 150%;
-      background: linear-gradient(45deg, #7F5AF0, #A78BFA, transparent);
-      top: -50%;
-      left: -50%;
-      transform: rotate(25deg);
-      opacity: 0;
-      transition: 0.5s;
+    .skill-card:hover,
+    .card:hover,
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 35px #7F5AF0;
     }
 
-    .skill-card:hover::before {
-      opacity: 0.4;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 0 30px #7F5AF0;
-    }
-
-    .skill-card h3 {
-      margin-bottom: 15px;
+    .skill-card h3,
+    .card h3,
+    .project-card h3 {
+      margin-bottom: 18px;
       color: #A78BFA;
     }
 
     .project-container {
-      margin-top: 40px;
       display: flex;
       justify-content: center;
-    }
-
-    .project-card {
-      max-width: 700px;
-      padding: 40px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      position: relative;
-      overflow: hidden;
-      transition: 0.5s ease;
-    }
-
-    /* Moving Glow Border Effect */
-    .project-card::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg,
-          transparent,
-          #7F5AF0,
-          transparent);
-      animation: rotateGlow 6s linear infinite;
-      opacity: 0.2;
-    }
-
-    @keyframes rotateGlow {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .project-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 0 40px #7F5AF0;
-    }
-
-    .project-content h3 {
-      color: #A78BFA;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
     }
 
     .tech-tags {
@@ -255,35 +232,8 @@
       font-size: 0.85rem;
     }
 
-    /* Cards */
-    .card-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      flex: 1;
-      min-width: 250px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      transition: 0.4s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px #7F5AF0;
-    }
-
     /* Contact */
-    .contact-section {
-      text-align: center;
-    }
-
     .contact-container {
-      margin-top: 40px;
       display: flex;
       flex-direction: column;
       gap: 25px;
@@ -295,52 +245,25 @@
       max-width: 600px;
       padding: 18px 25px;
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
       border-radius: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
       transition: 0.4s;
     }
 
-    /* Sliding Purple Glow Bar */
-    .contact-bar::before {
-      content: "";
-      position: absolute;
-      left: -100%;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #7F5AF0, #A78BFA);
-      transition: 0.5s;
-      z-index: -1;
-    }
-
-    .contact-bar:hover::before {
-      left: 0;
-    }
-
     .contact-bar:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 0 30px #7F5AF0;
-    }
-
-    .contact-bar span {
-      font-weight: 600;
+      transform: translateY(-8px);
+      background: #7F5AF0;
+      box-shadow: 0 0 25px #7F5AF0;
     }
 
     .contact-bar a {
-      color: white;
       text-decoration: none;
+      color: white;
     }
 
-    .contact-bar:hover a {
-      color: #0F172A;
-    }
-
+    /* Footer */
     .footer {
       margin-top: 100px;
       padding: 60px 20px;
@@ -367,39 +290,20 @@
       text-decoration: none;
       color: white;
       transition: 0.4s;
-      backdrop-filter: blur(10px);
     }
 
-    /* Hover animation */
     .footer-icons a:hover {
       transform: translateY(-8px) scale(1.1);
       background: #7F5AF0;
       box-shadow: 0 0 25px #7F5AF0;
-    }
-
-    .footer-role {
-      margin-top: 15px;
-      color: #A78BFA;
-      font-weight: 500;
-    }
-
-    .footer-tagline {
-      margin-top: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.8;
-      font-size: 0.95rem;
     }
   </style>
 
 </head>
 
 <body>
-
   <nav class="navbar">
     <div class="logo">JANICE JOHNSON</div>
-
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -413,6 +317,7 @@
 
   <section class="hero" id="home">
     <h1>JANICE JOHNSON</h1>
+    <h2 id="typing"></h2>
     <p>
       Motivated B.Tech Artificial Intelligence and Data Science student passionate
       about building user-friendly digital experiences and innovative AI solutions.
@@ -441,7 +346,7 @@
           Experienced in modern layouts, styling, and animations.
         </p>
       </div>
-      
+
       <div class="skill-card">
         <h3>JavaScript</h3>
         <p>
@@ -449,7 +354,7 @@
           and event handling.
         </p>
       </div>
-      
+
       <div class="skill-card">
         <h3>UI/UX Design (Figma)</h3>
         <p>
@@ -457,7 +362,7 @@
           and clean interface structure.
         </p>
       </div>
-      
+
       <div class="skill-card">
         <h3>MERN Stack (Learning)</h3>
         <p>
@@ -566,6 +471,36 @@
       glow.style.left = e.clientX + "px";
       glow.style.top = e.clientY + "px";
     });
+
+    const roles = [
+      "Artificial Intelligence & Data Science Student"
+    ];
+
+    let i = 0, j = 0;
+    let currentRole = "";
+    let isDeleting = false;
+    const typingElement = document.getElementById("typing");
+
+    function typeEffect() {
+      currentRole = roles[i];
+      if (!isDeleting) {
+        typingElement.textContent = currentRole.substring(0, j++);
+        if (j > currentRole.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000);
+          return;
+        }
+      } else {
+        typingElement.textContent = currentRole.substring(0, j--);
+        if (j < 0) {
+          isDeleting = false;
+          i = (i + 1) % roles.length;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? 50 : 100);
+    }
+
+    typeEffect();
   </script>
   <footer class="footer">
 
